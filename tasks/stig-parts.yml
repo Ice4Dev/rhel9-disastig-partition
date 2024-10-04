@@ -20,12 +20,12 @@
     ### 8:/tmp 3G
     ### 9:/boot 1G
       - name: Create the new partitions
-        shell: sgdisk -e -n 3:0:+{{ var_size | int }}G -n 4:0:+{{ log_size | int }}G -n 5:0:+{{ vtmp_size | int }}G -n 6:0:+{{ audit_size | int }}G -n 7:0:+{{ home_size | int }}G -n 8:0:+{{ tmp_size | int }}G -n 9:0:+{{ boot_size | int }}G -t 3:8300 -t 4:8300 -t 5:8300 -t 6:8300 -t 7:8300 -t 8:8300 -t 9:8300 {{ vol_drive }} -p
+        shell: sgdisk -e -n 3:0:+{{ var_size | int }}G -n 4:0:+{{ log_size | int }}G -n 5:0:+{{ vtmp_size | int }}G -n 6:0:+{{ audit_size | int }}G -n 7:0:+{{ home_size | int }}G -n 8:0:+{{ tmp_size | int }}G -t 5:8300 -t 6:8300 -t 7:8300 -t 8:8300 -t 9:8300 -t 10:8300 {{ vol_drive }} -p
         become: yes
         become_method: sudo
 
       - name: Name the partitions
-        shell: sgdisk -c 3:"var" -c 4:"log" -c 5:"vartmp" -c 6:"audit" -c 7:"home" -c 8:"tmp" -c 9:"boot" {{ vol_drive }} -p
+        shell: sgdisk -c 5:"var" -c 6:"log" -c 7:"vartmp" -c 8:"audit" -c 9:"home" -c 10:"tmp" {{ vol_drive }} -p
         become: yes
         become_method: sudo
 
