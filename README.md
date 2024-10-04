@@ -1,8 +1,8 @@
-# rhel8-disastig-partition
+# rhel9-disastig-partition
 
 Ansible script for performing DISA STIG partitioning on an AWS EC2 instance without reboot
 
-# Enterprise Image RHEL 8
+# Enterprise Image RHEL 9
 
 ## Overview
 
