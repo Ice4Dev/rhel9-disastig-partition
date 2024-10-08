@@ -83,7 +83,7 @@
     - name: Update fstab for boot
       mount:
         path: /boot
-        src: UUID={{ uuid_tmp.stdout_lines[0] }}
+        src: UUID={{ uuid_boot.stdout_lines[0] }}
         fstype: "xfs"
         opts: nodev,nosuid
         state: present
