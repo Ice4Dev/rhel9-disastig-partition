@@ -22,7 +22,7 @@
 ### The following is a list of packages and versions used during creation/testing/implementation of the script
 ########################################
 
-sudo dnf install -q -y wget curl vim python3.11 python3.11-pip unzip net-tools bind-utils parted gdisk
+sudo dnf install -q -y wget curl vim python3.11 python3.11-pip unzip net-tools bind-utils parted gdisk ansible-core
 sudo pip3.11 --version
 sudo pip3.11 install ansible s3transfer botocore boto3
 sudo ansible --version
