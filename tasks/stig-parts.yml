@@ -12,13 +12,12 @@
 - name: Create Partions
   block:
 
-    ### 3: /var 10G
-    ### 4:/var/log 5G
-    ### 5:/var/tmp 2G
-    ### 6:/var/log/audit 5G
-    ### 7:/home 5G
-    ### 8:/tmp 3G
-    ### 9:/boot 1G
+    ### 5: /var 10G
+    ### 6:/var/log 5G
+    ### 7:/var/tmp 2G
+    ### 8:/var/log/audit 5G
+    ### 9:/home 5G
+    ### 10:/tmp 3G
       - name: Create the new partitions
         shell: sgdisk -e -n 5:0:+{{ var_size | int }}G -n 6:0:+{{ log_size | int }}G -n 7:0:+{{ vtmp_size | int }}G -n 8:0:+{{ audit_size | int }}G -n 9:0:+{{ home_size | int }}G -n 10:0:+{{ tmp_size | int }}G -t 5:8300 -t 6:8300 -t 7:8300 -t 8:8300 -t 9:8300 -t 10:8300 {{ vol_drive }} -p
         become: yes

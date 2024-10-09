@@ -7,7 +7,6 @@
   vars:
     #ansible_python_interpreter: /usr/bin/python3.11
     vol_new_size: "{{ desired_size | default(60) }}"
-    boot_size: "{{ boot_parts | default(1) }}"
     var_size: "{{ var_parts | default(15) }}"
     log_size: "{{ log_parts | default(7) }}"
     vtmp_size: "{{ vtmp_parts | default(2) }}"

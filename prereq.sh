@@ -23,9 +23,8 @@
 ########################################
 
 sudo dnf install -q -y wget curl vim python3.11 python3.11-pip unzip net-tools bind-utils parted gdisk
-sudo pip3 --version
-sudo alternatives --set python /usr/bin/python3.11
-sudo pip3 install ansible s3transfer botocore boto3
+sudo pip3.11 --version
+sudo pip3.11 install ansible s3transfer botocore boto3
 sudo ansible --version
 ### If using newly created directory cd to that location for aws installation
 ### cd /ec2-ansible

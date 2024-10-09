@@ -3,32 +3,28 @@
 - name: Find the boot UUIDs
   block:
     - name: Find var uuid
-      shell: blkid -o value -s UUID {{ vol_drive }}p3
+      shell: blkid -o value -s UUID {{ vol_drive }}5
       register: uuid_var
     
     - name: Find log uuid
-      shell: blkid -o value -s UUID {{ vol_drive }}p4
+      shell: blkid -o value -s UUID {{ vol_drive }}6
       register: uuid_log
 
     - name: Find /var/tmp uuid
-      shell: blkid -o value -s UUID {{ vol_drive }}p5
+      shell: blkid -o value -s UUID {{ vol_drive }}7
       register: uuid_vartmp
     
     - name: Find audit uuid
-      shell: blkid -o value -s UUID {{ vol_drive }}p6
+      shell: blkid -o value -s UUID {{ vol_drive }}8
       register: uuid_audit
     
     - name: Find home uuid
-      shell: blkid -o value -s UUID {{ vol_drive }}p7
+      shell: blkid -o value -s UUID {{ vol_drive }}9
       register: uuid_home
     
     - name: Find tmp uuid
-      shell: blkid -o value -s UUID {{ vol_drive }}p8
+      shell: blkid -o value -s UUID {{ vol_drive }}10
       register: uuid_tmp
-
-    - name: Find boot uuid
-      shell: blkid -o value -s UUID {{ vol_drive }}p9
-      register: uuid_boot
 
 - name: Update the /etc/fstab
   block:
@@ -79,12 +75,3 @@
         fstype: "xfs"
         opts: nodev,nosuid,noexec
         state: present
-
-    - name: Update fstab for boot
-      mount:
-        path: /boot
-        src: UUID={{ uuid_boot.stdout_lines[0] }}
-        fstype: "xfs"
-        opts: nodev,nosuid
-        state: present
-

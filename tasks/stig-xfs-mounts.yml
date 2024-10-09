@@ -38,12 +38,6 @@
         state: directory
         mode: 0755
 
-    - name: Create boot dir
-      file:
-        path: /mnt/boot
-        state: directory
-        mode: 0755
-
 
 - name: Sync Stuff from original dirs to temp location in /mnt
   block:
@@ -100,15 +94,6 @@
         rsync_opts:
           - "-A"
           - "-X"
-        
-    - name: Rsync /boot to /mnt/boot
-      ansible.posix.synchronize:
-        src: /boot
-        dest: /mnt/boot/
-        archive: yes
-        rsync_opts:
-          - "-A"
-          - "-X"
 
 - name: Create fs
   block:
@@ -122,44 +107,39 @@
     - name: Create xfs filesystem on var
       filesystem:
         fstype: "xfs"
-        dev: "{{ vol_drive }}p3"
+        dev: "{{ vol_drive }}5"
         #force: yes
 
     - name: Create xfsfilesystem on log
       filesystem:
         fstype: "xfs"
-        dev: "{{ vol_drive }}p4"
+        dev: "{{ vol_drive }}6"
         #force: yes
 
     - name: Create xfs filesystem on vartmp
       filesystem:
         fstype: "xfs"
-        dev: "{{ vol_drive }}p5"
+        dev: "{{ vol_drive }}7"
 
     - name: Create xfs filesystem on audit
       filesystem:
         fstype: "xfs"
-        dev: "{{ vol_drive }}p6"
+        dev: "{{ vol_drive }}8"
         #force: yes
 
     - name: Create xfs filesystem on home
       filesystem:
         fstype: "xfs"
-        dev: "{{ vol_drive }}p7"
+        dev: "{{ vol_drive }}9"
 
     - name: Create xfs filesystem on tmp
       filesystem:
         fstype: "xfs"
-        dev: "{{ vol_drive }}p8"
-
-    - name: Create xfs filesystem on boot
-      filesystem:
-        fstype: "xfs"
-        dev: "{{ vol_drive }}p9"
+        dev: "{{ vol_drive }}10"
 
 ######
     - name: Mount var dir
-      command: "mount {{ vol_drive }}p3 /var"
+      command: "mount {{ vol_drive }}5 /var"
     
     - name: Create var log dir
       file:
@@ -168,7 +148,7 @@
         mode: 0755
 
     - name: Mount log dir
-      command: "mount {{ vol_drive }}p4 /var/log"
+      command: "mount {{ vol_drive }}6 /var/log"
 
     - name: Create var tmp dir
       file:
@@ -177,7 +157,7 @@
         mode: 0755
 
     - name: Mount log dir
-      command: "mount {{ vol_drive }}p5 /var/tmp"
+      command: "mount {{ vol_drive }}7 /var/tmp"
 
     - name: Create var log audit dir
       file:
@@ -186,16 +166,13 @@
         mode: 0755
 
     - name: Mount audit dir
-      command: "mount {{ vol_drive }}p6 /var/log/audit"
+      command: "mount {{ vol_drive }}8 /var/log/audit"
 
     - name: Mount home dir
-      command: "mount {{ vol_drive }}p7 /home"
+      command: "mount {{ vol_drive }}9 /home"
 
     - name: Mount tmp dir
-      command: "mount {{ vol_drive }}p8 /tmp"
-
-    - name: Mount boot dir
-      command: "mount {{ vol_drive }}p9 /boot"
+      command: "mount {{ vol_drive }}10 /tmp"
     
 
 
@@ -256,15 +233,3 @@
         rsync_opts:
           - "-A"
           - "-X"
-
-    - name: Sync from /mnt back to boot
-      ansible.posix.synchronize:
-        src: /mnt/boot/
-        dest: /boot/
-        archive: yes
-        rsync_opts:
-          - "-A"
-          - "-X"
-
-
-
