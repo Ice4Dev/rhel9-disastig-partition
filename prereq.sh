@@ -22,9 +22,13 @@
 ### The following is a list of packages and versions used during creation/testing/implementation of the script
 ########################################
 
-sudo dnf install -q -y wget curl vim python3.11 python3.11-pip unzip net-tools bind-utils parted gdisk ansible-core
+sudo dnf install -q -y wget curl vim python3.11 python3.11-pip unzip net-tools bind-utils parted gdisk
+sudo yum install ansible-core
 sudo pip3.11 --version
+sudo rm /usr/bin/python3
+sudo ln /usr/bin/python3.11 /usr/bin/python3
 sudo pip3.11 install ansible s3transfer botocore boto3
+sudo ansible-galaxy collection install ansible.posix community.general amazon.aws
 sudo ansible --version
 ### If using newly created directory cd to that location for aws installation
 ### cd /ec2-ansible
