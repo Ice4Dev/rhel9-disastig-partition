@@ -23,10 +23,13 @@
 ########################################
 
 sudo dnf install -q -y wget curl vim python3.11 python3.11-pip unzip net-tools bind-utils parted gdisk
-sudo yum install ansible-core
+sudo dnf install ansible-core
+cat << 'EOF' >> /etc/ansible/ansible.cfg
+ansible_python_interpreter = /usr/bin/python3.11
+EOF
 sudo pip3.11 --version
-sudo rm /usr/bin/python3
-sudo ln -s /usr/bin/python3.11 /usr/bin/python3
+# sudo rm /usr/bin/python3 ## Oh HELL no!!!
+# sudo ln -s /usr/bin/python3.11 /usr/bin/python3 ## Also no
 sudo pip3.11 install ansible s3transfer botocore boto3
 sudo ansible-galaxy collection install ansible.posix community.general amazon.aws
 sudo ansible --version
