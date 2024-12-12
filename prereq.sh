@@ -28,6 +28,8 @@ sudo pip3.11 --version
 # sudo rm /usr/bin/python3 ## Oh HELL no!!!
 # sudo ln -s /usr/bin/python3.11 /usr/bin/python3 ## Also no
 sudo pip3.11 install ansible s3transfer botocore boto3
+ansible-config init --disabled -t all > ansible.cfg
+sudo mv ./ansible.cfg /etc/ansible/ansible.cfg
 sudo sed -i '2i ansible_python_interpreter = /usr/bin/python3.11' /etc/ansible/ansible.cfg # After [defaults] tag
 sudo ansible-galaxy collection install ansible.posix community.general amazon.aws
 sudo ansible --version
