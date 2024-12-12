@@ -21,7 +21,7 @@
 ### For simplicity I will just include the python3.6 related packages
 ### The following is a list of packages and versions used during creation/testing/implementation of the script
 ########################################
-
+### Add /usr/local/bin to root PATH so you don't see an error
 cat << 'EOF' >> ~/.bashrc
 PATH="/usr/local/bin:$PATH"
 EOF
