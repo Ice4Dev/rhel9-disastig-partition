@@ -23,7 +23,7 @@
 ########################################
 
 sudo dnf install -q -y wget curl vim python3.11 python3.11-pip unzip net-tools bind-utils parted gdisk
-sudo dnf install ansible-core
+sudo dnf install -q -y ansible-core
 sudo pip3.11 --version
 # sudo rm /usr/bin/python3 ## Oh HELL no!!!
 # sudo ln -s /usr/bin/python3.11 /usr/bin/python3 ## Also no
@@ -35,8 +35,7 @@ sudo ansible --version
 ### cd /ec2-ansible
 curl -k 'https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip' -o 'awscliv2.zip'
 unzip -q awscliv2.zip
+rm awscliv2.zip
 sudo ./aws/install
+rm -rf aws
 aws --version
-
-
-
