@@ -142,7 +142,7 @@ xvda     259:0    0  50G  0 disk
 
    ```
    cd /path/to/ansible/playbook/
-   sudo ansible-playbook ec2-partitions.yml
+   sudo ansible-playbook --extra-vars "vol_new_size=100" ec2-partitions.yml
    ```
 5. Once script has completed successfully an AMI can be created using the EC2 instance. This will ensure any EC2s launched from the newly created AMI has the correct partitions.
 
