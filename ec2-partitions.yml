@@ -4,6 +4,7 @@
   become: yes
   become_method: sudo
   gather_facts: yes
+  ansible_python_interpreter: "/usr/bin/python3.11"
   vars:
     #ansible_python_interpreter: /usr/bin/python3.11
     vol_new_size: "{{ desired_size | default(60) }}"
