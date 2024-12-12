@@ -36,7 +36,7 @@ sudo ansible --version
 ### If using newly created directory cd to that location for aws installation
 ### cd /ec2-ansible
 curl -k 'https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip' -o 'awscliv2.zip'
-sudo unzip -q awscliv2.zip
+unzip -q awscliv2.zip
 sudo ./aws/install
 aws --version
 
