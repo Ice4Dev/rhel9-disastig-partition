@@ -41,7 +41,7 @@ sudo ansible --version
 ### cd /ec2-ansible
 curl -k 'https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip' -o 'awscliv2.zip'
 unzip -q awscliv2.zip
-rm awscliv2.zip
+sudo rm -f awscliv2.zip
 sudo ./aws/install
 rm -rf aws
 /usr/local/bin/aws --version
