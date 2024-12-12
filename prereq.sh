@@ -38,4 +38,4 @@ unzip -q awscliv2.zip
 rm awscliv2.zip
 sudo ./aws/install
 rm -rf aws
-aws --version
+/usr/local/bin/aws --version
