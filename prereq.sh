@@ -25,6 +25,7 @@
 cat << 'EOF' >> ~/.bashrc
 PATH="/usr/local/bin:$PATH"
 EOF
+source ~/.bashrc
 sudo dnf install -q -y wget curl vim python3.11 python3.11-pip unzip net-tools bind-utils parted gdisk
 sudo dnf install -q -y ansible-core
 sudo pip3.11 --version
