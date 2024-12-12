@@ -24,7 +24,7 @@
 
 sudo dnf install -q -y wget curl vim python3.11 python3.11-pip unzip net-tools bind-utils parted gdisk
 sudo dnf install ansible-core
-cat << 'EOF' >> /etc/ansible/ansible.cfg
+sudo cat << 'EOF' >> /etc/ansible/ansible.cfg
 ansible_python_interpreter = /usr/bin/python3.11
 EOF
 sudo pip3.11 --version
