@@ -22,7 +22,7 @@ This repo runs an Ansible playbook that will do the following:
 
 #### In order for the script to work properly a few pre-requirements must be done to the server.
 
-Please see prereq.sh for more information
+Please see prereq.sh for more information, and git clone into a new temporary directory created at '/'
 
 #### Extra Vars
 
