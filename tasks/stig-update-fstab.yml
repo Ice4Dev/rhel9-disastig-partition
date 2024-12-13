@@ -10,7 +10,7 @@
       shell: blkid -o value -s UUID {{ vol_drive }}p6
       register: uuid_log
 
-    - name: Find /var/tmp uuid
+    - name: Find opt uuid
       shell: blkid -o value -s UUID {{ vol_drive }}p7
       register: uuid_vartmp
     
@@ -44,9 +44,9 @@
         opts: nodev,nosuid,noexec
         state: present
 
-    - name: Update fstab for /var/tmp
+    - name: Update fstab for opt
       mount:
-        path: /var/tmp
+        path: /opt
         src: UUID={{ uuid_vartmp.stdout_lines[0] }}
         fstype: "xfs"
         opts: nodev,nosuid,noexec
