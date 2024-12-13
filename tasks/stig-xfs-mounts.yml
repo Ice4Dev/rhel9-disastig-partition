@@ -14,9 +14,9 @@
         state: directory
         mode: 0755
 
-    - name: Create vartmp dir
+    - name: Create opt dir
       file:
-        path: /mnt/vtmp
+        path: /mnt/opt
         state: directory
         mode: 0755
 
@@ -59,10 +59,10 @@
           - "-A"
           - "-X"
 
-    - name: Rsync /var/tmp to /mnt/vtmp
+    - name: Rsync /opt to /mnt/opt
       ansible.posix.synchronize:
-        src: /var/tmp/
-        dest: /mnt/vtmp/
+        src: /opt/
+        dest: /mnt/opt/
         archive: yes
         rsync_opts:
           - "-A"
@@ -116,7 +116,7 @@
         dev: "{{ vol_drive }}p6"
         #force: yes
 
-    - name: Create xfs filesystem on vartmp
+    - name: Create xfs filesystem on opt
       filesystem:
         fstype: "xfs"
         dev: "{{ vol_drive }}p7"
@@ -156,8 +156,8 @@
         state: directory
         mode: 0755
 
-    - name: Mount log dir
-      command: "mount {{ vol_drive }}p7 /var/tmp"
+    - name: Mount opt dir
+      command: "mount {{ vol_drive }}p7 /opt"
 
     - name: Create var log audit dir
       file:
@@ -197,10 +197,10 @@
           - "-A"
           - "-X"
 
-    - name: Sync from /mnt back to var tmp
+    - name: Sync from /mnt back to opt
       ansible.posix.synchronize:
-        src: /mnt/vtmp/
-        dest: /var/tmp/
+        src: /mnt/opt/
+        dest: /opt/
         archive: yes
         rsync_opts:
           - "-A"
