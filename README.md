@@ -40,7 +40,7 @@ Extra vars that can be passed to the script
   Default value is 15
 --extra-vars "log_size"
   Default value is 7
---extra-vars "vtmp_size"
+--extra-vars "opt_size"
   Default value is 2
 --extra-vars "audit_size"
   Default value is 5
