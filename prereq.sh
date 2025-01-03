@@ -27,7 +27,7 @@ PATH="/usr/local/bin:$PATH"
 export PATH
 EOF
 source ~/.bashrc
-sudo dnf install -q -y wget curl vim python3.11 python3.11-pip unzip net-tools bind-utils parted gdisk
+sudo dnf install -q -y wget vim python3.11 python3.11-pip unzip net-tools bind-utils parted gdisk
 sudo dnf install -q -y ansible-core
 sudo pip3.11 --version
 # sudo rm /usr/bin/python3 ## Oh HELL no!!!
